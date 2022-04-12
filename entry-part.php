@@ -80,22 +80,21 @@
 
 <h1>Management System</h1>
 <body class="text-body">
-<h2>Repair Order Entry Form</h2>
+<h2>Repair Part Order Entry Form</h2>
 <div class="container">
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
         $conn = mysqli_connect('localhost', 'root', '031201', 'hicms') or die("Connection Failed:" . mysqli_connect_error());
 
-        $eEnd = $_POST['efd'];
-        $aEnd = $_POST['afd'];
-        $pCost = $_POST['pc'];
-        $lCost = $_POST['lc'];
-        $sDate = $_POST['sd'];
-        $eid = $_POST['eid'];
-        $tid= $_POST['tid'];
-        $addr= $_POST['pa'];
+        $a = $_POST['oid'];
+        $b = $_POST['od'];
+        $c = $_POST['dd'];
+        $d = $_POST['pn'];
+        $e = $_POST['up'];
+        $f = $_POST['q'];
+        $g = $_POST['inv'];
 
-        $sql = "INSERT INTO repair_order (Expect_end_date, Actual_end_date, Part_cost, Labor_cost, Start_date, Estimate_ID, Team_ID, Property_address) VALUES ('$eEnd','$aEnd','$pCost','$lCost','$sDate','$eid','$tid','$addr')";
+        $sql = "INSERT INTO parts (Order_ID, Order_date, Deliver_date, Part_name, Unit_price, Quantity, Invoice) VALUES ('$a','$b','$c','$d','$e','$f','$g')";
 
         $query = mysqli_query($conn, $sql);
         if ($query) {
@@ -109,66 +108,58 @@
     <form action="" method="POST">
         <div class="row">
             <div class="col-25">
-                <label for="tid">Team ID: </label>
+                <label for="oid">Order ID: </label>
             </div>
             <div class="col-75">
-                <input type="number" name="tid" id="tid" required>
+                <input type="number" name="oid" id="oid" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="eid">Estimate ID: </label>
+                <label for="od">Order Date: </label>
             </div>
             <div class="col-75">
-                <input type="number" name="eid" id="eid" required>
+                <input type="date" name="od" id="od" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="pa">Property Address: </label>
+                <label for="dd">Delivery Date: </label>
             </div>
             <div class="col-75">
-                <input type="text" name="pa" id="pa" required>
+                <input type="date" name="dd" id="dd" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="efd">Expected Finish Date: </label>
+                <label for="pn">Part Name: </label>
             </div>
             <div class="col-75">
-                <input type="date" name="efd" id="efd" required>
+                <input type="text" name="pn" id="pn" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="sd">Starting Date: </label>
+                <label for="up">Unit Price: </label>
             </div>
             <div class="col-75">
-                <input type="date" name="sd" id="sd" required>
+                <input type="number" name="up" id="up" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="afd">Actual Finish Date: </label>
+                <label for="q">Quantity: </label>
             </div>
             <div class="col-75">
-                <input type="date" name="afd" id="afd" required>
+                <input type="number" name="q" id="q" required>
             </div>
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="pc">Part Cost: </label>
+                <label for="inv">Invoice: </label>
             </div>
             <div class="col-75">
-                <input type="number" name="pc" id="pc" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <label for="lc">Labor Cost: </label>
-            </div>
-            <div class="col-75">
-                <input type="number" name="lc" id="lc" required>
+                <textarea type="text" name="inv" id="inv" required></textarea>
             </div>
         </div>
         <br>
