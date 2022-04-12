@@ -30,7 +30,7 @@
 
     .button-group {
         display: flex;
-
+        width: 80%;
     }
 
     .panel {
@@ -76,9 +76,14 @@
     <img src="/source/logo.svg" alt="logo" class="logo rotate"/>
     <h1>Welcome to HICMS.</h1><br/>
     <div class="button-group">
-        <button class="button">Customer</button>
-        <button class="button">Employee</button>
-        <button class="button">Contractor</button>
+<!--        <button class="button">Customer</button>-->
+<!--        <button class="button">Employee</button>-->
+<!--        <button class="button">Contractor</button>-->
+        <a class="button" href="overview.php">Overview</a>
+        <a class="button" href="entry-claim.php">Claim Entry</a>
+        <a class="button" href="entry-estimate.php">Estimate Entry</a>
+        <a class="button" href="entry-repair.php">Repair Order Entry</a>
+        <a class="button" href="entry-part.php">Repair Part Order Entry</a>
     </div>
     <p>
         <?php
